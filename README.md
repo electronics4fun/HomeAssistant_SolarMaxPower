@@ -10,6 +10,9 @@ With this setting every input (four) is limited to 200W by the inverter.
 That means, that in the morning and in the evening the inverter is not delivering the maximum power that is possible.
 The script tries to fix that by regulating the output power always to 800W.
 
+![Graph1](/doc/powerGraph1.png)
+![Graph2](/doc/powerGraph2.png)
+
 
 ## Requirements
 - compatible inverter
