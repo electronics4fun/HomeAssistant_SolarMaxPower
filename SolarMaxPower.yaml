@@ -1,0 +1,36 @@
+alias: Solar MaxPower
+description: Solar MaxPower
+triggers:
+  - trigger: time_pattern
+    seconds: /30
+conditions:
+  - condition: sun
+    after: sunrise
+  - condition: sun
+    before: sunset
+actions:
+  - if:
+      - condition: numeric_state
+        entity_id: sensor.gartenhaus_power
+        above: 800
+    then:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: 800
+        target:
+          entity_id: number.gartenhaus_limit_nonpersistent_absolute
+    else:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: >-
+            {% if (states('number.gartenhaus_limit_nonpersistent_absolute') |
+            float(0)) >= 1450  %}
+              1450 
+            {% else %} {{
+            states('number.gartenhaus_limit_nonpersistent_absolute') | float(0)
+            + 20 }} {% endif %}
+        target:
+          entity_id: number.gartenhaus_limit_nonpersistent_absolute
+mode: single
