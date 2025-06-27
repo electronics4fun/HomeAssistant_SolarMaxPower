@@ -12,6 +12,9 @@ The script tries to fix that by regulating the output power always to 800W.
 
 ![Graph1](/doc/powerGraph1.png)
 ![Graph2](/doc/powerGraph2.png)
+Green/Red: Panels East
+Orange/Blue: Panels West
+Purple: combined power
 
 
 ## Requirements
